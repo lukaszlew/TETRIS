@@ -68,7 +68,7 @@ Z = [[[0,0,0,0,0],
       [0,1,1,0,0],
       [0,1,0,0,0],
       [0,0,0,0,0]]]
- 
+
 I = [[[0,0,1,0,0],
       [0,0,1,0,0],
       [0,0,1,0,0],
@@ -79,13 +79,13 @@ I = [[[0,0,1,0,0],
       [0,0,0,0,0],
       [0,0,0,0,0],
       [0,0,0,0,0]]]
- 
+
 O = [[[0,0,0,0,0],
       [0,0,0,0,0],
       [0,1,1,0,0],
       [0,1,1,0,0],
       [0,0,0,0,0]]]
-     
+
 J = [[[0,0,0,0,0],
       [0,1,0,0,0],
       [0,1,1,1,0],
@@ -106,7 +106,7 @@ J = [[[0,0,0,0,0],
       [0,0,1,0,0],
       [0,1,1,0,0],
       [0,0,0,0,0]]]
- 
+
 L = [[[0,0,0,0,0],
       [0,0,0,1,0],
       [0,1,1,1,0],
@@ -127,7 +127,7 @@ L = [[[0,0,0,0,0],
       [0,0,1,0,0],
       [0,0,1,0,0],
       [0,0,0,0,0]]]
- 
+
 T = [[[0,0,0,0,0],
       [0,0,1,0,0],
       [0,1,1,1,0],
@@ -168,6 +168,7 @@ class val:
 # starting_pos to lista list z pos
 # każda pos oznacza pozycję startową na boardzie dla nowo powstałego
 # shape'a
+# LL: Niezmienniki kurde!
 
 starting_pos = [[pos(0,3),pos(0,4),pos(0,5),pos(0,6),pos(0,7)],
                 [pos(1,3),pos(1,4),pos(1,5),pos(1,6),pos(1,7)],
@@ -200,7 +201,7 @@ def print_board(board, shape):
 def pick_new_random_shape(shapes):
     curr_shape_ind = random.randint(0, 6)
     shape, shape_rot_num = shapes[curr_shape_ind][0], 0
-  
+
     return shape, shape_rot_num, curr_shape_ind
 
 def rotate_shape(shapes, shape, shape_rot_num, curr_shape_ind):
@@ -214,7 +215,7 @@ def rotate_shape(shapes, shape, shape_rot_num, curr_shape_ind):
 
 def save_curr_shape_pos(shape):
     curr_pos = []
-  
+
     for row in shape:
         new_row = []
         for val in row:
@@ -245,7 +246,7 @@ def check_if_collide(board, shape):
 def move_shape(shape, input_move = 's'):
     old_shape = deepcopy(shape)
     delta_pos = {
-    's' : pos(1, 0), 
+    's' : pos(1, 0),
     'a' : pos(0, -1),
     'd' : pos(0, 1),
     '' : pos(0, 0),
@@ -270,7 +271,7 @@ def add_shape_to_board(board, shape):
 
 def remove_full_rows(board):
     len_row_no_border = len(board[0][1:-1])
-  
+
     for i in range(len(board[5:])):
         count = 0
         for j in range(1, len(board[0][:-1])):
@@ -279,7 +280,7 @@ def remove_full_rows(board):
         if count == len_row_no_border:
             remove_row_and_adapt_board(board, i)
             remove_full_rows(board)
-  
+
     return
 
 def remove_row_and_adapt_board(board, i):
